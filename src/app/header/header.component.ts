@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  collapsed: boolean = true;
-  show: boolean = false;
-  @Output() displayPage = new EventEmitter<string>();
-  
+  // Output() serverCreated = new EventEmitter<{}
+  // collapsed: boolean = true;
+  // show: boolean = false;
+  // @Output() displayPage = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {

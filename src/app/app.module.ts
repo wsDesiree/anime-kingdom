@@ -6,17 +6,30 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
+import { Routes,RouterModule } from '@angular/router';
+import { UserComponent } from './profile/user/user.component';
+import { FormsModule } from '@angular/forms';
+
+const appRoutes: Routes =[
+  { path: '', component: HomepageComponent },
+  { path: 'header', component: HeaderComponent },
+  { path: 'profile', component: ProfileComponent },
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     ProfileComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
