@@ -9,11 +9,15 @@ import { HeaderComponent } from './header/header.component';
 import { Routes,RouterModule } from '@angular/router';
 import { UserComponent } from './profile/user/user.component';
 import { FormsModule } from '@angular/forms';
+import { FeedComponent } from './feed/feed.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const appRoutes: Routes =[
-  { path: '', component: HomepageComponent },
+  { path: '', redirectTo: '/homepage', pathMatch: 'full'},
   { path: 'header', component: HeaderComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'feed', component: FeedComponent }
 ];
 
 
@@ -23,7 +27,9 @@ const appRoutes: Routes =[
     HomepageComponent,
     ProfileComponent,
     HeaderComponent,
-    UserComponent
+    UserComponent,
+    FeedComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
