@@ -11,6 +11,7 @@ import { UserComponent } from './profile/user/user.component';
 import { FormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { HttpClientModule } from '@angular/common/http'
 
 const appRoutes: Routes =[
   { path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -35,7 +36,8 @@ const appRoutes: Routes =[
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
