@@ -60,7 +60,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   OnClearPosts(){
     // Send Http request
-    this.postsService.deletePosts().subscribe{() =>{
+    this.postsService.deletePosts().subscribe;{() =>{
       this.loadedPosts = [];
     }};
   }
@@ -92,5 +92,5 @@ export class AppComponent implements OnInit, OnDestroy {
     //   // ...
     //   this.loadedPosts =posts;
     // });
-  }
+
 

@@ -30,12 +30,12 @@ export class PostsService {
     });
   }
 
-  fetchPosts({
+  fetchPosts() {
     let searchParams =new HttpParams();
     searchParams = searchParams.append('print', 'pretty')
     searchParams = searchParams.append('custom','key');
     return this.http
-      .get<{ [key: sting]: Post }> ('https://my-first-app-anime-kingdom-default-rtdb.firebaseio.com/posts.json',
+      .get<{ [key: string]: Post }> ('https://my-first-app-anime-kingdom-default-rtdb.firebaseio.com/posts.json',
       {
         headers: new HttpHeaders({'Custom-Header':'Hello'}),
         params: searchParams,
@@ -56,7 +56,7 @@ export class PostsService {
         return throwError(errorRes);
       })
     );
-
+    }
 
   deletePosts() {
     return this.http.delete(
@@ -75,4 +75,4 @@ export class PostsService {
       }
     }));
   }
-
+}

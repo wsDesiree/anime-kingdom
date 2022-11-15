@@ -11,7 +11,10 @@ import { UserComponent } from './profile/user/user.component';
 import { FormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthInterceptorService } from './auth-interceptor.service';
+import { LoggingInterceptorService } from './logging-interceptor.service';
+import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes =[
   { path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -30,7 +33,8 @@ const appRoutes: Routes =[
     HeaderComponent,
     UserComponent,
     FeedComponent,
-    SignUpComponent
+    SignUpComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,18 @@ const appRoutes: Routes =[
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
