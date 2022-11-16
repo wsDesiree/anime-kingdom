@@ -11,23 +11,23 @@ const appRoutes: Routes = [
   {
     path: 'homepage',
     component: HomepageComponent,
-    children: [
-      {path: '', component: SignUpComponent },
-      {path: 'new', component: },
-      {
-      path: 'id',
-      component:,
-      resolve: []
-    },
-    {
-      path: ':id/edit',
-      component:,
-      resolve:[]
-    }
-    ]},
-  { path: 'profile', component: ProfileComponent },
-  { path: 'auth', component: AuthComponent}
-];
+//     children: [
+//       {path: '', component: SignUpComponent },
+//       {path: 'new', component: },
+//       {
+//       path: 'id',
+//       component:,
+//       resolve: []
+//     },
+//     {
+//       path: ':id/edit',
+//       component:,
+//       resolve:[]
+//     }
+//     ]},
+//   { path: 'profile', component: ProfileComponent },
+//   { path: 'auth', component: AuthComponent}
+// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

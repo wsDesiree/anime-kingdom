@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   loadedPosts: Post[] =[];
   isFetching = false;
-  error = null;
+  error: any | null;
   private errorSub!: Subscription;
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
