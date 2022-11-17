@@ -6,6 +6,9 @@ import { Post } from './post.model';
 
 @Injectable({providedIn:'root'})
 export class PostsService {
+  getPosts() {
+    throw new Error("Method not implemented.");
+  }
   error = new Subject<string>();
 
   constructor(private http: HttpClient) {
