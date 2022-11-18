@@ -11,5 +11,12 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // let option =  '';
+  // option += '<option>select country</option>';
+  // for(let country_code in country_list){
+  //     // set selected option user country
+  //     let selected = (country_code == user_country_code) ? ' selected' : '';
+  //     option += '<option value="'+country_code+'"'+selected+'>'+country_list[country_code]+'</option>';
+  // }
+  // document.getElementById('country').innerHTML = option;
 }
