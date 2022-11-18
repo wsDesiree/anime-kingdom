@@ -9,6 +9,23 @@ export class DataStorageService{
 
     StorePosts(){
       const posts = this.postService.getPosts();
-      return this.http.put('https://my-first-app-anime-kingdom-default-rtdb.firebaseio.com/posts.json', posts);
-    }
+      return this.http
+      .put(
+        'https://my-first-app-anime-kingdom-default-rtdb.firebaseio.com/posts.json',
+      posts
+      )
+      .subscribe(response => {
+        console.log(response);
+      });
+  }
+
+  fetchPosts(){
+    this.http
+    .get(
+      'https://my-first-app-anime-kingdom-default-rtdb.firebaseio.com/posts.json'
+      )
+      .subscribe(); {
+        console.log()
+      }
+  }
 }
