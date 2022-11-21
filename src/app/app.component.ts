@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import{ Post } from './post.model';
 import { PostsService } from './posts.service';
 import { Subscription } from 'rxjs';
+import { FormArray, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +16,8 @@ export class AppComponent implements OnInit, OnDestroy {
   isFetching = false;
   error: any | null;
   private errorSub!: Subscription;
+  signupForm: any;
+  forbiddenUsername: any;
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -73,6 +76,21 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.errorSub.unsubscribe();
   }
+  onSubmit(){
+    console.log(this.signupForm);
+  }
+  onAddHobby(){
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.signupForm.get('hobbies')).push(control);
+  }
+  forbiddenName(control: FormControl): {[s: string]: boolean}{
+    if (this.forbiddenUsername.indexOf(control.value) !== -1){
+      return {'nameIsForbidden':true};
+    }
+    return null;
+  }
+  forbiddenEmails(control: FormControl): Promise<any> | 
+
 }
   // private fetchPosts(){
   //   this.isFetching = true;

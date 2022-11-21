@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LoggingInterceptorService } from './logging-interceptor.service';
 import { AuthComponent } from './auth/auth.component';
+import { AlertComponent } from './shared/alert/alert.component';
 
 const appRoutes: Routes =[
   { path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -34,7 +35,8 @@ const appRoutes: Routes =[
     UserComponent,
     FeedComponent,
     SignUpComponent,
-    AuthComponent
+    AuthComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
