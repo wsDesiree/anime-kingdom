@@ -11,5 +11,8 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  title = 'Anime_Kingdom';
+  myimage: string = "assets/images/myimage.jpg";
+  // mylogo: string = "assets/images/.png"
 }
+

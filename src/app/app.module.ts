@@ -7,7 +7,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { Routes,RouterModule } from '@angular/router';
-import { UserComponent } from './profile/user/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -33,7 +32,6 @@ const appRoutes: Routes =[
     HomepageComponent,
     ProfileComponent,
     HeaderComponent,
-    UserComponent,
     FeedComponent,
     SignUpComponent,
     AuthComponent,

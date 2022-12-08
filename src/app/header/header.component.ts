@@ -1,4 +1,6 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.services';
 
 @Component({
@@ -13,15 +15,27 @@ import { DataStorageService } from '../shared/data-storage.services';
 //     this.dataStorageService.StorePosts();
 //   }
 // }
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   // Output() serverCreated = new EventEmitter<{}
   // collapsed: boolean = true;
   // show: boolean = false;
   // @Output() displayPage = new EventEmitter<string>();
+  isAuthenticated = false;
+  private userSub: Subscription
 
-  constructor(private dataStorageService:DataStorageService) { }
+  constructor(
+    private dataStorageService:DataStorageService,
+    private authService: AuthService
+    ) { }
 
-  ngOnInit(): void {
+
+  ngOnInit() {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+      console.log(!user);
+      console.log(!!user);
+
+    });
   }
   onSaveData(){
     this.dataStorageService.StorePosts();
@@ -29,5 +43,7 @@ export class HeaderComponent implements OnInit {
   onfetchData(){
     this.dataStorageService.fetchPosts();
   }
-
+  ngOnDestroy(){
+    throw new Error('Method not implemented.');
+  }
 }

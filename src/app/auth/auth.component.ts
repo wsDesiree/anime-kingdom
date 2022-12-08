@@ -7,8 +7,11 @@ import { AuthResponseData, AuthService } from './auth.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+  secImage: string = "assets/images/auth.jpg";
+
   isLoginMode = true;
   isLoading = false;
   error:string = null;
@@ -51,4 +54,5 @@ export class AuthComponent {
   onHandleError() {
     this.error = null;
   }
+
 }
