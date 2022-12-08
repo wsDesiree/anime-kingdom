@@ -6,18 +6,60 @@ import{ Post } from './post.model';
 import { PostsService } from './posts.service';
 import { Subscription } from 'rxjs';
 import { FormArray, FormControl, Validators } from '@angular/forms';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('divState', [
+      state('normal', style({
+        'background-color': 'red',
+        transform: 'translateX(0)'
+      })),
+      state('highlighted', style({
+        backgroundColor: 'blue',
+        transform: 'translateX(100px)'
+      })),
+      transition('normal => highlighted', animate(300)),
+      transition('highlighted => normal', animate(800)),
+    ]),
+    trigger('list1', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('* => void', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100px)'
+        }),
+        animate(300)
+      ]),
+        transition('* => void', [
+          animate(300, style({
+            transform: 'translateX(100px)',
+            opacity: 0
+          }))
+        ])
+      ]),
+      // transition('highlighted => normal', animate(800)),
+    ]},
+  )
 export class AppComponent implements OnInit, OnDestroy {
+  state = 'normal';
+
+
   loadedPosts: Post[] =[];
   isFetching = false;
   error: any | null;
   private errorSub!: Subscription;
   signupForm: any;
   forbiddenUsername: any;
+  OnAnimate(){
+    this.state == 'normal' ? this.state ='highlighted' : this.state = 'normal';
+    // this.wildState == 'normal' ? this.wildState ='highlighted' : this.wildState = 'normal';
+  };
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -83,15 +125,15 @@ export class AppComponent implements OnInit, OnDestroy {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.signupForm.get('hobbies')).push(control);
   }
-  forbiddenName(control: FormControl): {[s: string]: boolean}{
-    if (this.forbiddenUsername.indexOf(control.value) !== -1){
-      return {'nameIsForbidden':true};
-    }
-    return null;
-  }
-  forbiddenEmails(control: FormControl): Promise<any> | 
+  // forbiddenName(control: FormControl): {[s: string]: boolean}{
+  //   if (this.forbiddenUsername.indexOf(control.value) !== -1){
+  //     return {'nameIsForbidden':true};
+  //   }
+    // return null;
+  // }
+  // forbiddenEmails(control: FormControl): Promise<any> |
 
-}
+  // }
   // private fetchPosts(){
   //   this.isFetching = true;
     // this.http
@@ -114,3 +156,4 @@ export class AppComponent implements OnInit, OnDestroy {
     // });
 
 
+}

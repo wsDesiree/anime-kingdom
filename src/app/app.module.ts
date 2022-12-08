@@ -16,6 +16,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 import { LoggingInterceptorService } from './logging-interceptor.service';
 import { AuthComponent } from './auth/auth.component';
 import { AlertComponent } from './shared/alert/alert.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 const appRoutes: Routes =[
   { path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -36,7 +37,8 @@ const appRoutes: Routes =[
     FeedComponent,
     SignUpComponent,
     AuthComponent,
-    AlertComponent
+    AlertComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

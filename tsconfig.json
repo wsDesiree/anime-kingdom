@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "target":"ES5",
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
